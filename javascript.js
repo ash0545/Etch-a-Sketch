@@ -80,10 +80,10 @@ function createGrid(size) {
         let div = document.createElement('div');
         div.classList.add('gridElement');
         div.style.backgroundColor = backgroundColor;
-        canvas.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-        canvas.style.gridTemplateRows = `repeat(${size}, 1fr)`;
         canvas.appendChild(div);
     }
+    canvas.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    canvas.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 }
 
 //Delete grid
