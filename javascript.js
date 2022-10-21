@@ -21,6 +21,12 @@ const penColor = document.querySelector('#penColor');
 const clear = document.querySelector('#clear');
 const canvas = document.querySelector('.gridContainer');
 
+createGrid(16);
+gridElement = document.querySelectorAll('.gridElement');
+colorOnHover();
+
+
+
 //Get user input when buttons pressed
 
 //Get user's desired size, delete current grid, create new grid
@@ -35,8 +41,11 @@ gridSize.addEventListener('click', () => {
     } else {
         alert('Invalid size');
     }
-    deleteGrid();
+    deleteGrid(gridElement);
     createGrid(customGridSize);
+    gridElement = document.querySelectorAll('.gridElement');
+    colorOnHover();
+
 })
 
 //Get user's desired color choice
@@ -88,12 +97,9 @@ function clearGrid(nodeList) {
     });
 }
 
-//--------------------------------------------------------------------------------
-createGrid(16); //initalize grid
-
-//Select all "pixels" in canvas and color when mouse enters
-gridElement = document.querySelectorAll('.gridElement');
-
-gridElement.forEach(element => element.addEventListener('mouseenter', () => {
-    element.style.backgroundColor = color;
-}))
+//Color when mouse enters grid element
+function colorOnHover() {
+    gridElement.forEach(element => element.addEventListener('mouseenter', () => {
+        element.style.backgroundColor = color;
+    }))
+}
