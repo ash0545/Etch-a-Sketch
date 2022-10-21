@@ -21,10 +21,14 @@ const penColor = document.querySelector('#penColor');
 const clear = document.querySelector('#clear');
 const canvas = document.querySelector('.gridContainer');
 
+//--------------------------------------------------------------------------------
+//Initial canvas
+
 createGrid(16);
 gridElement = document.querySelectorAll('.gridElement');
 colorOnHover();
 
+//--------------------------------------------------------------------------------
 
 
 //Get user input when buttons pressed
@@ -76,9 +80,8 @@ function createGrid(size) {
         let div = document.createElement('div');
         div.classList.add('gridElement');
         div.style.backgroundColor = backgroundColor;
-        //temp
-        div.style.height = '10px';
-        div.style.width = '10px';
+        div.style.height = (960 / size) + 'px';
+        div.style.width = (960 / size) + 'px'; //calculate height and width
         canvas.appendChild(div);
     }
 }
