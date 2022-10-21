@@ -21,11 +21,12 @@ const penColor = document.querySelector('#penColor');
 const clear = document.querySelector('#clear');
 const canvas = document.querySelector('.gridContainer');
 
+//--------------------------------------------------------------------------------
+
 //Get user input when buttons pressed
 
 //Get user's desired size, delete current grid, create new grid
 gridSize.addEventListener('click', () => {
-
     let x = parseInt(prompt('Enter grid size (<100)', '16'));
     if (Number.isNaN(x)) {
         alert('Size cannot be a non-integer value');
@@ -39,6 +40,26 @@ gridSize.addEventListener('click', () => {
     deleteGrid();
     createGrid(customGridSize);
 })
+
+//Get user's desired color choice
+penColor.addEventListener('click', () => {
+    let x = parseInt(prompt('Choose desired color (0 - 3):\n 0:Red, 1:Green, 2:Blue, 3:Yellow'));
+    if (Number.isNaN(x)) {
+        alert('Not valid, enter integer from 0 - 3');
+    } else if (x === 0 || x === 1 || x === 2 || x === 3) {
+        color = x;
+    } else {
+        alert('Not valid, enter integer from 0 - 3');
+    }
+})
+
+//Clear grid when pressed
+clear.addEventListener('click', () => {
+    let x = document.querySelectorAll('.gridElement');
+    clearGrid(x);
+})
+
+//--------------------------------------------------------------------------------
 
 //Create grid of (size x size) divs
 function createGrid(size) {
