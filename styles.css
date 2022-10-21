@@ -1,8 +1,7 @@
 .gridContainer {
     width: 960px;
     height: 960px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
 }
 
 .gridElement {

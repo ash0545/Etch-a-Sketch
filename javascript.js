@@ -80,8 +80,8 @@ function createGrid(size) {
         let div = document.createElement('div');
         div.classList.add('gridElement');
         div.style.backgroundColor = backgroundColor;
-        div.style.height = (960 / size) + 'px';
-        div.style.width = (960 / size) + 'px'; //calculate height and width
+        canvas.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+        canvas.style.gridTemplateRows = `repeat(${size}, 1fr)`;
         canvas.appendChild(div);
     }
 }
