@@ -44,18 +44,21 @@ gridSize.addEventListener('click', () => {
 function createGrid(size) {
     for (let i = 0; i < (size * size); i++) {
         let div = document.createElement('div');
+        div.classList.add('gridElement');
         canvas.appendChild(div);
     }
 }
 
 //Delete grid
-function deleteGrid() {
-
+function deleteGrid(nodeList) {
+    nodeList.forEach(element => {
+        canvas.removeChild(element);
+    })
 }
 
 //Set all elements of grid's nodelist to background color
 function clearGrid(nodeList) {
-    nodeList.array.forEach(element => {
+    nodeList.forEach(element => {
         element.style.backgroundColor = backgroundColor;
     });
 }
