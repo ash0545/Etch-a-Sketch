@@ -11,8 +11,8 @@ color
 Set all divs to background color when clear button pressed
 */
 
-let backgroundColor;
-let color;
+let backgroundColor = 'slategray';
+let color = 'yellow';
 const colorChoices = ['red', 'green', 'blue', 'yellow'];
 let customGridSize = 16; //default size of grid
 
@@ -20,8 +20,6 @@ const gridSize = document.querySelector('#gridSize');
 const penColor = document.querySelector('#penColor');
 const clear = document.querySelector('#clear');
 const canvas = document.querySelector('.gridContainer');
-
-//--------------------------------------------------------------------------------
 
 //Get user input when buttons pressed
 
@@ -47,7 +45,7 @@ penColor.addEventListener('click', () => {
     if (Number.isNaN(x)) {
         alert('Not valid, enter integer from 0 - 3');
     } else if (x === 0 || x === 1 || x === 2 || x === 3) {
-        color = x;
+        color = colorChoices[x];
     } else {
         alert('Not valid, enter integer from 0 - 3');
     }
@@ -61,11 +59,17 @@ clear.addEventListener('click', () => {
 
 //--------------------------------------------------------------------------------
 
+//Required functions
+
 //Create grid of (size x size) divs
 function createGrid(size) {
     for (let i = 0; i < (size * size); i++) {
         let div = document.createElement('div');
         div.classList.add('gridElement');
+        div.style.backgroundColor = backgroundColor;
+        //temp
+        div.style.height = '10px';
+        div.style.width = '10px';
         canvas.appendChild(div);
     }
 }
@@ -83,3 +87,13 @@ function clearGrid(nodeList) {
         element.style.backgroundColor = backgroundColor;
     });
 }
+
+//--------------------------------------------------------------------------------
+createGrid(16); //initalize grid
+
+//Select all "pixels" in canvas and color when mouse enters
+gridElement = document.querySelectorAll('.gridElement');
+
+gridElement.forEach(element => element.addEventListener('mouseenter', () => {
+    element.style.backgroundColor = color;
+}))
